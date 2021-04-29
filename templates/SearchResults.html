@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content= "william Harer">
+    <meta content="Based off of cover and jumbotron examples @https://getbootstrap.com/docs/4.5/examples/cover/ and @https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+
+    <style>
+      .pagination {
+        display: inline-block;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+
+      .noHover{
+        pointer-events: none;
+        color:#fff!important;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      #SearchBar {
+        margin: auto;
+        width: 50%;
+      }
+      .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .col1{
+        display:flex;
+        width:75px;
+        margin-right: 10px;
+      }
+      .col2{
+        float: right;
+        width:75%;
+        text-align: left!important;
+      }
+      .avatar{
+        border-radius:50%;
+      }
+      #avatar{
+        float:left;
+        margin-top:50%;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/cover.css') }}">
+  </head>
+  <body class="text-center" style="background-color: #e8e8e8; height:auto;">
+    <div style="width: 100%;">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">P.T.S.E</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+          </nav>
+        </div>
+      </header>
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column" style="background-color: #484848;
+      box-shadow: 5px 0px black;">
+  <main role="main" class="inner cover"
+  style="margin-top:15%">
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        {% for t,d,u,l,r,ID in results %}
+        <div class="row">
+          <div class="col1">  
+            <img src='/static/senatorPhotos/{{photos[u]}}' width="75" height="100" alt=avatar class="avatar">
+          </div>
+          <div class="col2">
+            <h2>{{t}}</h2>
+            <p>{{d}} Likes:{{l}} Retweets:{{r}}</p>
+            <p><a href="{{ url_for('senator', senator_id=u) }}" class="btn btn-secondary" role="button" name="senator" value={{u}}>View Politician Breakdown »</a></p>
+            <p><a href="http://twitter.com/twitter/statuses/{{ID}}" class="btn btn-secondary" role="button" name="tweet" value={{u}}>View Original Tweet»</a></p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <hr>
+    </div>
+  </main>
+  <footer class="mastfoot mt-auto">
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      {% if pc <= 10 %}
+        {% for i in range(1,pc+1) %}
+        <a href="{{url_for('results',TestQuery=query,RtAndLikes=rtAndLike,States=state,page=i)}}" name=pagecount value={{i}}>{{i}}</a>
+        {% endfor %}
+      {% else %}
+        {% if page!=1 %}
+        <a href="{{url_for('results',TestQuery=query,RtAndLikes=rtAndLike,States=state,page=1)}}" value=1 name=pagecount>1</a>
+        {% endif %}
+        <a href="#" class='noHover' value=page name=pagecount>{{page}}</a>
+        {% for i in range(page+1,page+3) %}
+        <a href="{{url_for('results',TestQuery=query,RtAndLikes=rtAndLike,States=state,page=i)}}" value=1 name=pagecount>{{i}}</a>
+        {% endfor %}
+        <a href="{{url_for('results',TestQuery=query,RtAndLikes=rtAndLike,States=state,page=i)}}" name=pagecount value={{pc}}>{{pc}}</a>
+      {% endif %}
+      <a href="#">&raquo;</a>
+    </div>
+  </footer>
+  </div>
+</div>
+</body>
+</html>

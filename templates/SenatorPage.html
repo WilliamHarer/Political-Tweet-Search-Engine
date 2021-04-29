@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Cover Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
+
+    <!-- Bootstrap core CSS -->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+
+    <style>
+      .pagination {
+        display: inline-block;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      #SearchBar {
+        margin: auto;
+        width: 50%;
+      }
+      .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .col1{
+        display:flex;
+        width:75px;
+        margin-right: 10px;
+      }
+      .col2{
+        float: right;
+        width:75%;
+        text-align: left!important;
+      }
+      .Stats{
+        margin:auto;
+        text-align:left;
+      }
+      .avatar{
+        border-radius:50%;
+      }
+      #avatar{
+        float:left;
+        margin-top:50%;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Senator.css') }}">
+  </head>
+  <body class="text-center" style="background-color: #e8e8e8; min-height:100%;height:auto">
+    <div style="width: 100%;">
+<header class="masthead">
+  <div class="inner">
+    <h3 class="masthead-brand">P.T.S.E</h3>
+    <nav class="nav nav-masthead justify-content-center">
+      <a class="nav-link active" href="/">Home</a>
+    </nav>
+  </div>
+</header>
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column" style="
+        background-color: #484848;
+        box-shadow: 5px 0px black;
+        height:auto;
+        min-height: 100%">
+  <main role="main" class="inner cover" style="margin-top:10%;">
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class=innerCol>
+          <div class="row">
+            <div class="col1">  
+              <img src={{photo}} width="75" height="100" alt=avatar class="avatar">
+            </div>
+            <div class="col2">
+              <h2>{{senator}}</h2>
+              <p>{{followers['description']}} </p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col2">
+              <h2>Most Recent Tweet</h2>
+              <p>{{data['newest']}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col2">
+              <h2>Most Liked Tweet</h2>
+              <p>{{data['mostLikes']}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col2">
+              <h2>Most Retweeted Tweet</h2>
+              <p>{{data['mostRetwets']}}</p>
+            </div>
+          </div>
+          <div class="row" style="margin-top:10%">
+            <div class=Stats>
+              <p>Average Likes: {{data['avgLikes']}}</p>
+              <p>Average Retweets: {{data['avgRetweets']}}</p>
+              <p>Average Interaction: {{data['avgInteraction']}}</p>
+            </div>
+            <div class=Stats>
+              <p>Total Likes: {{data['totalLikes']}}</p>
+              <p>Total Retweets: {{data['totalRetweets']}}</p>
+              <p>Total Interaction: {{data['totalInteraction']}}</p>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </main>
+  <footer class="mastfoot mt-auto">
+  </footer>
+</div>
+</div>
+</body>
+</html>

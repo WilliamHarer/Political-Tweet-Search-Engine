@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content= "william Harer">
+    <meta content="Based off of cover and jumbotron examples @https://getbootstrap.com/docs/4.5/examples/cover/ and @https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      #SearchBar {
+        margin: auto;
+        width: 50%;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/cover.css') }}">
+  </head>
+  <body class="text-center" style="background-color: #e8e8e8; height:auto; min-height: 100%">
+  <div style="width: 100%;">
+  <header class="masthead">
+    <div class="inner">
+      <h3 class="masthead-brand">P.T.S.E</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="/">Home</a>
+      </nav>
+    </div>
+  </header>
+    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column" 
+      style="background-color: #484848;
+      box-shadow: 5px 0px black;
+      min-height: 100%;">
+  <main role="main" class="inner cover"
+  style="margin-top:15%;">
+    <h1 class="cover-heading">Political Tweet Search Engine</h1>
+    <form class="form-inline mt-2 mt-md-0" id="SearchBar" method="get" action="{{ url_for('results') }}">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="TestQuery">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+      <label for="RtAndLikes">Sort By Retweet and Likes</label>
+	  <input type="checkbox" id ="RtAndLikes" name="RtAndLikes" value="True">
+	  <hr>
+      <label for="States">Filter results by State</label>
+      <select name="States" id="States">
+      	<option value="None">None</option>
+    	<option value="AL">AL</option>
+    	<option value="AK">AK</option>
+    	<option value="AZ">AZ</option>
+    	<option value="AR">AR</option>
+    	<option value="CA">CA</option>
+    	<option value="CO">CO</option>
+    	<option value="CT">CT</option>
+    	<option value="ID">ID</option>
+    	<option value="NV">NV</option>
+    	<option value="OR">OR</option>
+    	<option value="WA">WA</option>
+    	<option value="DE">DE</option>
+    	<option value="FL">FL</option>
+    	<option value="GA">GA</option>
+    	<option value="HI">HI</option>
+    	<option value="IL">IL</option>
+    	<option value="IN">IN</option>
+    	<option value="IA">IA</option>
+    	<option value="KA">KA</option>
+    	<option value="KY">KY</option>
+    	<option value="LA">LA</option>
+    	<option value="ME">ME</option>
+    	<option value="MD">MD</option>
+    	<option value="MA">MA</option>
+    	<option value="MI">MI</option>
+    	<option value="MN">MN</option>
+    	<option value="MS">MS</option>
+    	<option value="MO">MO</option>
+    	<option value="MT">MT</option>
+    	<option value="NE">NH</option>
+    	<option value="NJ">NJ</option>
+    	<option value="NM">NM</option>
+    	<option value="NY">NY</option>
+    	<option value="NC">NC</option>
+    	<option value="ND">ND</option>
+    	<option value="OH">OH</option>
+    	<option value="OK">OK</option>
+    	<option value="PA">RI</option>
+    	<option value="SC">SC</option>
+    	<option value="SD">TN</option>
+    	<option value="TX">TX</option>
+    	<option value="UT">UT</option>
+    	<option value="VT">VT</option>
+    	<option value="VA">VA</option>
+    	<option value="WV">WV</option>
+    	<option value="WI">WI</option>
+    	<option value="WY">WY</option>
+  	  </select>
+    </form>
+    <br>
+    <p class="lead">This is an in-progress logging of all available tweets by U.S Senators. Curious what U.S. Senators have "tweeted" about a topic? Enter the topic into the search bar to find out!</p>
+  </main>
+</div>
+</div>
+</body>
+</html>
